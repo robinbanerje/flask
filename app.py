@@ -40,7 +40,7 @@ def form():
             result = 'fail'
 
         # return render_template('form.html', score = avg_marks)
-        return redirect(url_for(result,score = avg_marks))
+        return redirect(url_for(result,score = avg_marks)) # for redirecting to success or fail page
 
 if __name__=='__main__':
     app.run(debug=True)
