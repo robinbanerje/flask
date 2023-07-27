@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__)
 
@@ -34,7 +34,13 @@ def form():
 
         avg_marks = (maths + science + history)/3
 
-        return render_template('form.html', score = avg_marks)
+        if(avg_marks > 50):
+            result = 'success'
+        else:
+            result = 'fail'
+
+        # return render_template('form.html', score = avg_marks)
+        return redirect(url_for(result,score = avg_marks))
 
 if __name__=='__main__':
     app.run(debug=True)
