@@ -14,13 +14,14 @@ def welcome():
 def index():
     return render_template('index.html')
 
-@app.route('/success/<score>')
+## Variable rule
+@app.route('/success/<int:score>')
 def success(score):
-    return "The student has passed successfully with score: " + score
+    return "The student has passed successfully with score: " + str(score)
 
-@app.route('/fail/<score>')
+@app.route('/fail/<int:score>')
 def fail(score):
-    return "The student has failed due to score: " + score
+    return "The student has failed due to score: " + str(score)
 
 if __name__=='__main__':
     app.run(debug=True)
