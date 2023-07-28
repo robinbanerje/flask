@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect
+import speedtest
 
 app = Flask(__name__)
 
@@ -41,6 +42,13 @@ def form():
 
         # return render_template('form.html', score = avg_marks)
         return redirect(url_for(result,score = avg_marks)) # for redirecting to success or fail page
+
+@app.route('/speed')
+def speed():
+    test = speedtest.Speedtest()
+    download_speed = test.download() / 1_000_000  # Convert to Mbps
+    upload_speed = test.upload() / 1_000_000  # Convert to Mbps
+    return  render_template('speedResult.html', down=download_speed, up=upload_speed)
 
 if __name__=='__main__':
     app.run(debug=True)
