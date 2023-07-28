@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect
-import speedtest
+import speedtest_cli as speedtest
 
 app = Flask(__name__)
 
@@ -48,7 +48,7 @@ def speed():
     test = speedtest.Speedtest()
     download_speed = test.download() / 1_000_000  # Convert to Mbps
     upload_speed = test.upload() / 1_000_000  # Convert to Mbps
-    return  render_template('speedResult.html', down=download_speed, up=upload_speed)
+    return render_template('speedResult.html', down=download_speed, up=upload_speed)
 
 if __name__=='__main__':
     app.run(debug=True)
