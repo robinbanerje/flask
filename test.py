@@ -27,7 +27,5 @@ def mathOperation():
     
     return jsonify(res)
 
-print (__name__)
-
 if __name__ == '__main__':
     obj.run(debug=True)
