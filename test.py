@@ -25,7 +25,7 @@ def mathOperation():
     else:
         res = 'invalide operation'
     
-    return jsonify(res)
+    return f"The operation is {operation} and the result is {res}"
 
 if __name__ == '__main__':
     obj.run(debug=True)
